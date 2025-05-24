@@ -3,11 +3,11 @@ import { httpBatchLink } from '@trpc/client';
 import { useState } from 'react';
 import superjson from 'superjson';
 
-import { AppRouter } from '@api/router';
+// Import trpc from separate file
+import { trpc } from './trpc';
 
-import { createTRPCReact } from '@trpc/react-query';
-
-export const trpc = createTRPCReact<AppRouter>();
+// Re-export trpc for components that import from TrpcWrapper
+export { trpc };
 
 export function TrpcWrapper({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());

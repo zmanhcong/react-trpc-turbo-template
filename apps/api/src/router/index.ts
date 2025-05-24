@@ -3,6 +3,7 @@ import { createUser } from '../procedures/createUser';
 import { getUsers } from '@api/procedures/getUsers';
 import { registerRouter } from '@api/procedures/auth/registerRouter';
 import { authRouter } from '@api/procedures/auth/loginLogoutRouter';
+import { getYoutubePlaylistVideos } from '@api/procedures/youtube/getYoutubePlaylistVideos';
 
 export const appRouter = router({
   auth: {
@@ -12,6 +13,9 @@ export const appRouter = router({
   user: {
     create: createUser,
     list: getUsers
+  },
+  youtube: {
+    getPlaylistVideos: getYoutubePlaylistVideos
   },
 });
 

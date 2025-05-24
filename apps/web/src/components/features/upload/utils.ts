@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { CsvHeaderKey, PostalCodeRow, ExtendedPostalCodeRow, csvHeaderJa } from './types';
+import { CsvHeaderKey, ExtendedPostalCodeRow, csvHeaderJa } from './types';
 
 // Utility to remove parentheses. Exg: "大通西（１〜１９丁目）" -> "大通西"
 const transformTownName = (name: string | undefined) =>
@@ -38,6 +38,7 @@ export async function parsePostalCodeCsv(
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
+      console.log('%c 👩‍🚒: results ', 'font-size:16px;background-color:#d35d14;color:white;', results)
         const processed = results.data.map((row) => {
           const mapped = mapJaKeysToInternal(row as Record<string, string>);
           return {

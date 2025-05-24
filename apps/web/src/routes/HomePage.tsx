@@ -67,7 +67,7 @@ export const HomePage: React.FC = () => (
       <ButtonLink to="#" icon={<NormalizeIcon />} width={300}>Address Normalizer</ButtonLink>
       </div>
       <div>
-      <ButtonLink to="#" icon={<MergeIcon />} width={300}>CSV Merge Tool</ButtonLink>
+      <ButtonLink to="/import-csv" icon={<MergeIcon />} width={300}>CSV Import</ButtonLink>
       <ButtonLink to="#" icon={<BatchIcon />} width={300}>Batch Validator</ButtonLink>
       <ButtonLink to="#" icon={<ExportIcon />} width={300}>Export Formatter</ButtonLink>
       </div>

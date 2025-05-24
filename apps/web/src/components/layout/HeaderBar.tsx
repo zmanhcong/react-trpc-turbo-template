@@ -11,6 +11,7 @@ export const HeaderBar: React.FC = () => {
     { label: 'Layout', to: '/layout' },
     { label: 'Invalid', to: '/invalid' },
     { label: 'Logout', to: '/logout' },
+    { label: 'Youtube', to: '/youtube' },
   ];
 
   return (

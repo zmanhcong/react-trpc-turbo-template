@@ -8,6 +8,8 @@ import { usersIndexRoute, usersRoute } from './routes/users/usersRoute'
 import { login, loginRoute } from './routes/auth/authRoute'
 import { registerRouter } from './routes/auth/registerRoute'
 import { uploadCsvRoute } from './routes/upload/uploadCsvRoute'
+import { importCsvRoute } from './routes/import/importCscRoute'
+import { youtubeRoute } from './routes/youtube/youtubeRoute'
 
 const routeTree = rootRoute.addChildren([
   // Posts
@@ -24,6 +26,12 @@ const routeTree = rootRoute.addChildren([
 
   indexRoute,
   uploadCsvRoute,
+
+  // Import
+  importCsvRoute,
+  
+  // YouTube
+  youtubeRoute,
 ])
 
 const queryClient = new QueryClient()

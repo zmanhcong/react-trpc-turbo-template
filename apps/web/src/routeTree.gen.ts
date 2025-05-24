@@ -16,11 +16,13 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as RootRouteImport } from './routes/rootRoute'
 import { Route as IndexRouteImport } from './routes/indexRoute'
 import { Route as HomePageImport } from './routes/HomePage'
+import { Route as YoutubeYoutubeRouteImport } from './routes/youtube/youtubeRoute'
 import { Route as UsersUsersRouteImport } from './routes/users/usersRoute'
 import { Route as UploadUploadCsvRouteImport } from './routes/upload/uploadCsvRoute'
 import { Route as PostsPostsRouteImport } from './routes/posts/postsRoute'
 import { Route as PostsPostsIndexRouteComponentImport } from './routes/posts/postsIndexRouteComponent'
 import { Route as LayoutLayoutRouteImport } from './routes/layout/_layoutRoute'
+import { Route as ImportImportCscRouteImport } from './routes/import/importCscRoute'
 import { Route as AuthRegisterRouteImport } from './routes/auth/registerRoute'
 import { Route as AuthAuthRouteImport } from './routes/auth/authRoute'
 
@@ -56,6 +58,11 @@ const PostsPostsLazyRoute = PostsPostsLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/posts/posts.lazy').then((d) => d.Route))
 
+const YoutubeYoutubeRouteRoute = YoutubeYoutubeRouteImport.update({
+  path: '/youtube/youtubeRoute',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const UsersUsersRouteRoute = UsersUsersRouteImport.update({
   path: '/users/usersRoute',
   getParentRoute: () => rootRoute,
@@ -80,6 +87,11 @@ const PostsPostsIndexRouteComponentRoute =
 const LayoutLayoutRouteRoute = LayoutLayoutRouteImport.update({
   id: '/_layoutRoute',
   getParentRoute: () => LayoutRoute,
+} as any)
+
+const ImportImportCscRouteRoute = ImportImportCscRouteImport.update({
+  path: '/import/importCscRoute',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const AuthRegisterRouteRoute = AuthRegisterRouteImport.update({
@@ -131,6 +143,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRegisterRouteImport
       parentRoute: typeof rootRoute
     }
+    '/import/importCscRoute': {
+      id: '/import/importCscRoute'
+      path: '/import/importCscRoute'
+      fullPath: '/import/importCscRoute'
+      preLoaderRoute: typeof ImportImportCscRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/layout': {
       id: '/layout'
       path: '/layout'
@@ -173,6 +192,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUsersRouteImport
       parentRoute: typeof rootRoute
     }
+    '/youtube/youtubeRoute': {
+      id: '/youtube/youtubeRoute'
+      path: '/youtube/youtubeRoute'
+      fullPath: '/youtube/youtubeRoute'
+      preLoaderRoute: typeof YoutubeYoutubeRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/posts/posts': {
       id: '/posts/posts'
       path: '/posts/posts'
@@ -191,11 +217,13 @@ export const routeTree = rootRoute.addChildren({
   RootRouteRoute,
   AuthAuthRouteRoute,
   AuthRegisterRouteRoute,
+  ImportImportCscRouteRoute,
   LayoutRoute: LayoutRoute.addChildren({}),
   PostsPostsIndexRouteComponentRoute,
   PostsPostsRouteRoute,
   UploadUploadCsvRouteRoute,
   UsersUsersRouteRoute,
+  YoutubeYoutubeRouteRoute,
   PostsPostsLazyRoute,
 })
 
@@ -211,11 +239,13 @@ export const routeTree = rootRoute.addChildren({
         "/rootRoute",
         "/auth/authRoute",
         "/auth/registerRoute",
+        "/import/importCscRoute",
         "/layout",
         "/posts/postsIndexRouteComponent",
         "/posts/postsRoute",
         "/upload/uploadCsvRoute",
         "/users/usersRoute",
+        "/youtube/youtubeRoute",
         "/posts/posts"
       ]
     },
@@ -233,6 +263,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/auth/registerRoute": {
       "filePath": "auth/registerRoute.tsx"
+    },
+    "/import/importCscRoute": {
+      "filePath": "import/importCscRoute.ts"
     },
     "/layout": {
       "filePath": "layout",
@@ -255,6 +288,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/users/usersRoute": {
       "filePath": "users/usersRoute.tsx"
+    },
+    "/youtube/youtubeRoute": {
+      "filePath": "youtube/youtubeRoute.ts"
     },
     "/posts/posts": {
       "filePath": "posts/posts.lazy.tsx"

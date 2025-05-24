@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { parsePostalCodeCsv } from './utils';
 import { CsvHeaderKey, ExtendedPostalCodeRow } from './types';
+import { downloadCsv } from '@/utils/downloadCSV';
 
 const csvHeaderJa = {
   nationalLocalPublicEntityCode: '全国地方公共団体コード',
@@ -67,16 +68,6 @@ function convertToCsv(rows: ExtendedPostalCodeRow[], headers: CsvHeaderKey[]): s
   const headerLine = headers.map(h => csvHeaderJa[h] || h).join(',');
   const dataLines = rows.map(row => headers.map(h => `"${(row[h as keyof ExtendedPostalCodeRow] ?? '').replace(/"/g, '""')}"`).join(','));
   return [headerLine, ...dataLines].join('\r\n');
-}
-
-function downloadCsv(filename: string, csv: string) {
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.setAttribute('download', filename);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
 
 export const UploadCsv: React.FC = () => {
@@ -189,7 +180,7 @@ export const UploadCsv: React.FC = () => {
             transition: 'background 0.2s',
           }}
         >
-          エクスポート
+          CSV出力
         </button>
         {filename && <span style={{ color: '#1976d2', fontWeight: 500, marginLeft: 12 }}>ファイル名: {filename}</span>}
       </div>

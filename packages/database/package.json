@@ -10,7 +10,7 @@
     "seed": "tsx prisma/seed.ts"
   },
   "prisma": {
-    "seed": "pnpm run seed"
+    "seed": "npm run seed"
   },
   "dependencies": {
     "@prisma/client": "^5.6.0",

@@ -29,10 +29,10 @@ export default function LoginComponent() {
   const [errorMessage, setErrorMessage] = React.useState('')
 
   const {mutate} = trpc.auth.loginLogout.login.useMutation({
-    onSuccess(data) {
+    onSuccess(data: any) {
       console.log('Login success:', data);
     },
-    onError(error) {
+    onError(error: any) {
       console.error('Login error:', error);
       setErrorMessage(error.message)
       setOpenSnackbar(true)
